@@ -14,6 +14,9 @@ jobs:
       - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZPRINCIPAL }}
+      - uses:  azure/CLI@v1
+        with:
+          inlineScript: az group create -l eastus -n atlantis
       - uses: azure/arm-deploy@v1
         with:
           subscriptionId: ${{ secrets.AZSUB }}
