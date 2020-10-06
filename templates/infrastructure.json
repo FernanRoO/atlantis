@@ -58,7 +58,7 @@
             }
         },
         {
-            "name": "jobs",
+            "name": "[variables('account')]",
             "type": "Microsoft.Web/sites",
             "apiVersion": "2018-11-01",
             "location": "[parameters('location')]",
@@ -85,7 +85,7 @@
                         },
                         {
                             "name": "WEBSITE_CONTENTSHARE",
-                            "value": "[toLower('jobs')]"
+                            "value": "[toLower(variables('account'))]"
                         },
                         {
                             "name": "FUNCTIONS_EXTENSION_VERSION",
