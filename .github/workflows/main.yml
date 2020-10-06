@@ -19,4 +19,4 @@ jobs:
           subscriptionId: ${{ secrets.AZSUB }}
           region: eastus
           resourceGroupName: atlantis
-          template: templates/storage.json
+          template: templates/infrastructure.json
