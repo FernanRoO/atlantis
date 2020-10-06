@@ -68,7 +68,7 @@
                 "[resourceId('Microsoft.Storage/storageAccounts', variables('account'))]"
             ],
             "properties": {
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', 'serverFarmName')]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('name'))]",
                 "siteConfig": {
                     "appSettings": [
                         {
