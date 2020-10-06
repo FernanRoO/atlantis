@@ -2,13 +2,13 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "name": {
-            "type": "string",
-            "defaultValue": "atlantis"
-        },
         "location": {
             "type": "string",
             "defaultValue": "eastus"
+        },
+        "name": {
+            "type": "string",
+            "defaultValue": "atlantis"
         }
     },
     "variables": {
@@ -24,6 +24,16 @@
             ]
         },
         {
+            "name": "[parameters('name')]",
+            "type": "Microsoft.Insights/components",
+            "apiVersion": "2015-05-01",
+            "location": "[parameters('location')]",
+            "kind": "AzFn",
+            "properties": {
+                "application_Type": "other"
+            }
+        },
+        {
             "name": "[variables('account')]",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2019-06-01",
@@ -36,12 +46,15 @@
         },
         {
             "name": "[parameters('name')]",
-            "type": "Microsoft.Insights/components",
-            "apiVersion": "2015-05-01",
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2018-02-01",
             "location": "[parameters('location')]",
-            "kind": "AzFn",
+            "sku": {
+                "name": "Dynamic",
+                "tier": "Y1"
+            },
             "properties": {
-                "application_Type": "other"
+                "name": "[parameters('name')]"
             }
         }
     ]
