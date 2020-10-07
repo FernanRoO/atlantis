@@ -23,6 +23,8 @@ jobs:
           region: eastus
           resourceGroupName: atlantis
           template: templates/infrastructure.json
+      - uses: actions/setup-dotnet@v1
+      - run: dotnet build ./jobs/
       - uses: SonarSource/sonarcloud-github-action@v1.4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
