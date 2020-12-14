@@ -1,2 +1,2 @@
 # atlantis
-sample application
+sample application.
